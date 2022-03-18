@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,10 +25,12 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class MainActivity extends AppCompatActivity {
+    private long time = 0; // 뒤로가기 두 번 클릭 시 종료하기 위해 사용되는 변수
     Fragment home, chat, friend, myinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -94,5 +97,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //뒤로가기 버튼 2번을 통해 시스템 종료
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - time >= 2000) {
+            time = System.currentTimeMillis();
+            Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+        } else if (System.currentTimeMillis() - time < 2000) {
+            moveTaskToBack(true);
+            finishAndRemoveTask();
+        }
+    }
   }
 

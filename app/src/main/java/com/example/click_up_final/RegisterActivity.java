@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
+    private long time = 0; // 뒤로가기 두 번 클릭 시 종료하기 위해 사용되는 변수
     private FirebaseAuth mAuth;
 
     @Override
@@ -29,13 +30,13 @@ public class RegisterActivity extends AppCompatActivity {
         findViewById(R.id.btnRegister).setOnClickListener(onClickListener);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        moveTaskToBack(true);
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//        System.exit(1);
+//    }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -98,6 +99,17 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
 
     }
+//    //뒤로가기 버튼 2번을 통해 시스템 종료
+//    @Override
+//    public void onBackPressed() {
+//        if (System.currentTimeMillis() - time >= 2000) {
+//            time = System.currentTimeMillis();
+//            Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+//        } else if (System.currentTimeMillis() - time < 2000) {
+//            moveTaskToBack(true);
+//            finishAndRemoveTask();
+//        }
+//    }
 }
 
 

@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
+    private long time = 0; // 뒤로가기 두 번 클릭 시 종료하기 위해 사용되는 변수
     private FirebaseAuth mAuth;
     private EditText edtLoginID, edtLoginPassword;
     private Button btnMainRegister, btnMainLogin;
@@ -71,11 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 updateUI(user);
-                                startToast("로그인이 성공하였습니다.");
+                                startToast("로그인을 성공하였습니다.");
                                 startActivity(MainActivity.class);
                             } else {
                                 if (task.getException() != null) {
-                                    startToast(task.getException().toString());
+                                    startToast("아이디또는 비밀번호가 일치하지 않습니다.");
                                     updateUI(null);
                                 }
                             }
@@ -99,6 +100,18 @@ public class LoginActivity extends AppCompatActivity {
         // 메인엑티비티에서 뒤로가기 누를 시 바로 종료를 위함
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    //뒤로가기 버튼 2번을 통해 시스템 종료
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - time >= 2000) {
+            time = System.currentTimeMillis();
+            Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+        } else if (System.currentTimeMillis() - time < 2000) {
+            moveTaskToBack(true);
+            finishAndRemoveTask();
+        }
     }
 }
 

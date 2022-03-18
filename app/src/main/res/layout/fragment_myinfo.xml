@@ -108,6 +108,15 @@
             android:text="프로필 등록">
 
         </Button>
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:text="로그아웃">
+
+        </Button>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
