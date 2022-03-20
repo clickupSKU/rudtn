@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.click_up_final.LoginActivity;
 import com.example.click_up_final.R;
 import com.example.click_up_final.UserInformationActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MyinfoFragment extends Fragment {
     private ViewGroup rootView;
@@ -29,8 +30,10 @@ public class MyinfoFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+
             }
         });
 

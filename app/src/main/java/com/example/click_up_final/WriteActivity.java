@@ -14,14 +14,14 @@ public class WriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_write);
     }
     //뒤로가기 버튼 2번을 통해 시스템 종료
-    @Override
-    public void onBackPressed() {
-        if (System.currentTimeMillis() - time >= 2000) {
-            time = System.currentTimeMillis();
-            Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
-        } else if (System.currentTimeMillis() - time < 2000) {
-            moveTaskToBack(true);
-            finishAndRemoveTask();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (System.currentTimeMillis() - time >= 2000) {
+//            time = System.currentTimeMillis();
+//            Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+//        } else if (System.currentTimeMillis() - time < 2000) {
+//            moveTaskToBack(true);
+//            finishAndRemoveTask();
+//        }
+//    }
 }
