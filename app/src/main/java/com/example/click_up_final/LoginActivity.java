@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnMainRegister).setOnClickListener(onClickListener);
         findViewById(R.id.btnMainLogin).setOnClickListener(onClickListener);
 
+
+
     }
 
     @Override
@@ -74,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                 updateUI(user);
                                 startToast("로그인이 성공하였습니다.");
                                 startActivity(MainActivity.class);
+                                //ds
                             } else {
                                 if (task.getException() != null) {
                                     startToast("아이디 또는 비밀번호가 일치하지 않습니다.");
@@ -88,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     private void updateUI(FirebaseUser user) {
     }
 
@@ -101,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
 
     //뒤로가기 버튼 2번을 통해 시스템 종료
     @Override
