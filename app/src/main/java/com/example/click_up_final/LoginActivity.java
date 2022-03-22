@@ -36,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnMainRegister).setOnClickListener(onClickListener);
         findViewById(R.id.btnMainLogin).setOnClickListener(onClickListener);
 
-
-
     }
 
     @Override
@@ -76,10 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                                 updateUI(user);
                                 startToast("로그인이 성공하였습니다.");
                                 startActivity(MainActivity.class);
-
                             } else {
                                 if (task.getException() != null) {
-                                    startToast("이메일 또는 비밀번호가 일치하지 않습니다.");
+                                    startToast("아이디 또는 비밀번호가 일치하지 않습니다.");
                                     updateUI(null);
                                 }
                             }
@@ -119,4 +116,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
+
 
