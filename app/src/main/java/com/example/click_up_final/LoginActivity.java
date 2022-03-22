@@ -17,10 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private long time = 0; // 뒤로가기 두 번 클릭 시 종료하기 위해 사용되는 변수
     private FirebaseAuth mAuth;
     private EditText edtLoginID, edtLoginPassword;
     private Button btnMainRegister, btnMainLogin;
+    private long time = 0; // 뒤로가기 두 번 클릭 시 종료하기 위해 사용되는 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         findViewById(R.id.btnMainRegister).setOnClickListener(onClickListener);
         findViewById(R.id.btnMainLogin).setOnClickListener(onClickListener);
+
+
 
     }
 
@@ -72,11 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 updateUI(user);
-                                startToast("로그인을 성공하였습니다.");
+                                startToast("로그인이 성공하였습니다.");
                                 startActivity(MainActivity.class);
+
                             } else {
                                 if (task.getException() != null) {
-                                    startToast("아이디또는 비밀번호가 일치하지 않습니다.");
+                                    startToast("이메일 또는 비밀번호가 일치하지 않습니다.");
                                     updateUI(null);
                                 }
                             }
@@ -87,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+
 
     private void updateUI(FirebaseUser user) {
     }
@@ -102,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     //뒤로가기 버튼 2번을 통해 시스템 종료
     @Override
     public void onBackPressed() {
@@ -114,5 +119,4 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
-
 
